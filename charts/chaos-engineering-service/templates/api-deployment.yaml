@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chaos-api-server
+  namespace: chaos-engineering
+  labels:
+    app: chaos-api-server
+spec:
+  replicas: {{ .Values.apiServer.replicaCount }}
+  selector:
+    matchLabels:
+      app: chaos-api-server
+  template:
+    metadata:
+      labels:
+        app: chaos-api-server
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      containers:
+      - name: api-server
+        image: "{{ .Values.apiServer.image.repository }}:{{ .Values.apiServer.image.tag }}"
+        imagePullPolicy: {{ .Values.apiServer.image.pullPolicy }}
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          {{- toYaml .Values.apiServer.resources | nindent 12 }}
+      {{- with .Values.apiServer.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.apiServer.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.apiServer.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

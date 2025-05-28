@@ -1,0 +1,15 @@
+apiVersion: chaos.engineering/v1alpha1
+kind: ChaosExperiment
+metadata:
+  name: nginx-memory-hog
+  namespace: chaos-test
+spec:
+  target:
+    apiVersion: v1
+    kind: Pod
+    name: nginx-test-0
+    namespace: chaos-test
+  experimentType: memory-hog
+  duration: "2m"
+  parameters:
+    memoryMB: "256"

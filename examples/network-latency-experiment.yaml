@@ -1,0 +1,16 @@
+apiVersion: chaos.engineering/v1alpha1
+kind: ChaosExperiment
+metadata:
+  name: nginx-network-latency
+  namespace: chaos-test
+spec:
+  target:
+    apiVersion: v1
+    kind: Pod
+    name: nginx-test-0
+    namespace: chaos-test
+  experimentType: network-latency
+  duration: "1m"
+  parameters:
+    latency: "200ms"
+    jitter: "50ms"

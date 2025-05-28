@@ -1,0 +1,13 @@
+apiVersion: v2
+name: chaos-engineering-service
+description: A Helm chart for Chaos Engineering as a Service
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - chaos
+  - engineering
+  - kubernetes
+maintainers:
+  - name: Chaos Engineering Team
+    email: chaos@example.com

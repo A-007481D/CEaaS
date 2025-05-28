@@ -1,0 +1,21 @@
+{
+  "name": "chaos-engineering-service",
+  "version": "1.0.0",
+  "description": "A self-service platform for running chaos engineering experiments on your Kubernetes infrastructure. This project provides a complete solution for implementing chaos engineering practices in your organization, allowing you to proactively identify weaknesses in your systems before they cause real outages.",
+  "main": "mock-api-server.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-mock-api": "node mock-api-server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

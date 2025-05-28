@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chaos-api-server
+  namespace: chaos-engineering
+  labels:
+    app: chaos-api-server
+spec:
+  type: {{ .Values.apiServer.service.type }}
+  ports:
+    - port: {{ .Values.apiServer.service.port }}
+      targetPort: {{ .Values.apiServer.service.targetPort }}
+      protocol: TCP
+      name: http
+  selector:
+    app: chaos-api-server
